@@ -98,7 +98,7 @@ def elementToValue(field, element, default=_marker):
     if IDict.providedBy(field):
         key_converter = IFromUnicode(field.key_type)
         value = OrderedDict()
-        for child in element.iterchildren(tag=etree.Element):
+        for child in element.getchildren():
             if noNS(child.tag.lower()) != 'element':
                 continue
             parseinfo.stack.append(child)
@@ -115,7 +115,7 @@ def elementToValue(field, element, default=_marker):
 
     elif ICollection.providedBy(field):
         value = []
-        for child in element.iterchildren(tag=etree.Element):
+        for child in element.getchildren():
             if noNS(child.tag.lower()) != 'element':
                 continue
             parseinfo.stack.append(child)

@@ -83,7 +83,7 @@ class BaseHandler(object):
         deferred = {}
         deferred_nonvalidated = {}
 
-        for attribute_element in element.iterchildren(tag=etree.Element):
+        for attribute_element in element.getchildren():
             parseinfo.stack.append(attribute_element)
             attribute_name = noNS(attribute_element.tag)
 
